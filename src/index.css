@@ -1,0 +1,48 @@
+@import "tailwindcss";
+
+.mask-inverse-corner {
+    position: absolute;
+    width: 40px; /* radius */
+    height: 40px;
+    background-color: white;
+    mask-image: radial-gradient(circle 40px at top left, transparent 40px, black 40px);
+    mask-composite: exclude;
+    -webkit-mask-image: radial-gradient(circle 40px at top left, transparent 40px, black 40px);
+    -webkit-mask-composite: destination-out;
+  }
+
+  .mask-inverse-corner-top-left {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-color: white;
+    mask-image: radial-gradient(circle 40px at top left, transparent 40px, black 40px);
+    mask-composite: exclude;
+    -webkit-mask-image: radial-gradient(circle 40px at top left, transparent 40px, black 40px);
+    -webkit-mask-composite: destination-out;
+  }
+  
+  .mask-inverse-corner-bottom-right {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-color: white;
+    mask-image: radial-gradient(circle 40px at bottom right, transparent 40px, black 40px);
+    mask-composite: exclude;
+    -webkit-mask-image: radial-gradient(circle 40px at bottom right, transparent 40px, black 40px);
+    -webkit-mask-composite: destination-out;
+  }
+
+  .mask-inverse-corner-rotated {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-color: white;
+    transform: rotate(180deg);
+    mask-image: radial-gradient(circle 40px at top left, transparent 40px, black 40px);
+    mask-composite: exclude;
+  
+    -webkit-mask-image:
+  
+  
+  
