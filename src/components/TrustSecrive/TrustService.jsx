@@ -1,5 +1,5 @@
 import React from "react";
-import SolarPanels from "../../assets/Solarpanels.jpg";
+import SolarPanels from "../../assets/SolarPanels.jpg";
 
 const services = [
   { id: "01", title: "Solar panels for home" },
