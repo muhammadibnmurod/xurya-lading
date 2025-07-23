@@ -4,30 +4,31 @@ import { motion, AnimatePresence } from "framer-motion";
 import SolarPanels from "../../assets/solar-panels.jpg";
 // import ChargingStation from "../../assets/charging-station.jpg";
 // import WindTurbine from "../../assets/wind-turbine.jpg";
+import { useTranslation } from "react-i18next";
 
 const data = [
   {
-    title: "Electric Car Charging Station",
-    company: "Tesla Energy",
+    title: "ElectricCarChargingStation",
+    company: "TeslaEnergy",
     quote:
       "We built a fast and reliable charging network across all regions using Xurya's smart solutions.",
-    author: "Elon D. — CTO Tesla Energy",
+    author: "ElonDCTOTeslaEnergy",
     image: SolarPanels,
   },
   {
-    title: "Residential Solar Panels",
+    title: "ResidentialSolarPanels",
     company: "Medtronic",
     quote:
-      "We are very satisfied with the services from Xurya. This helped us increase efficiency greatly.",
-    author: "Jennifer Kolobaly – CTO EV Medtronic",
+      "WeareverysatisfiedwiththeservicesfromXuryaThishelpedusincreaseefficiencygreatly",
+    author: "JenniferKolobalyCTOEVMedtronic",
     image: SolarPanels,
   },
   {
-    title: "Wind Power for Industry",
-    company: "WindNova Corp",
+    title: "WindPowerforIndustry",
+    company: "WindNovaCorp",
     quote:
-      "Xurya's wind solutions helped us reduce costs and move toward cleaner energy goals.",
-    author: "Marcus L. — Head of Ops at WindNova",
+      "Xuryaswindsolutionshelpedusreducecostsandmovetowardcleanerenergygoals",
+    author: "MarcusLHeadofOpsatWindNova",
     image: SolarPanels,
   },
 ];
@@ -36,13 +37,12 @@ const MedtronicCaseStudy = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   const current = data[activeIndex];
-
+  const { t } = useTranslation();
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50 px-4 py-12">
       <h1 className="text-3xl md:text-4xl font-bold text-gray-700 text-center mb-10">
-        See how we solve problems, right on target
+        {t("Seehowwesolveproblemsrightontarget")}
       </h1>
-
 
       <div className="flex flex-col lg:flex-row bg-white rounded-2xl shadow-xl p-6 lg:p-10 max-w-7xl w-full gap-8 min-h-[400px]">
         <AnimatePresence mode="wait">
@@ -55,15 +55,15 @@ const MedtronicCaseStudy = () => {
             className="w-full lg:w-1/2 space-y-5 flex flex-col justify-center"
           >
             <h2 className="text-2xl md:text-3xl font-semibold text-green-700">
-              {current.company}
+              {t(current.company)}
             </h2>
             <p className="text-gray-600 text-base md:text-lg leading-relaxed">
-              "{current.quote}"
+              {t(current.quote)}
             </p>
             <button className="bg-green-500 text-white font-medium px-6 py-3 rounded-full hover:bg-green-600 transition duration-200 w-fit">
-              View case study
+              {t("Viewcasestudy")}
             </button>
-            <p className="text-sm text-gray-500 mt-2">{current.author}</p>
+            <p className="text-sm text-gray-500 mt-2">{t(current.author)}</p>
           </motion.div>
 
           <motion.div
@@ -76,13 +76,12 @@ const MedtronicCaseStudy = () => {
           >
             <img
               src={current.image}
-              alt={current.title}
+              alt={t(current.title)}
               className="rounded-xl object-cover w-full sm:h-[300px] md:h-[350px] lg:h-full"
             />
           </motion.div>
         </AnimatePresence>
       </div>
-
 
       <div className="flex flex-wrap justify-center gap-3 mt-10 text-sm sm:text-base">
         {data.map((item, idx) => (
@@ -95,7 +94,7 @@ const MedtronicCaseStudy = () => {
                 : "bg-gray-100 text-gray-700 hover:bg-gray-200"
             }`}
           >
-            {item.title}
+            {t(item.title)}
           </button>
         ))}
       </div>
