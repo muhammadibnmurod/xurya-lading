@@ -107,12 +107,11 @@ const Discover = () => {
             </div>
           </div>
 
-
           <div className="absolute bottom-0 right-0 z-50 sm:m-0 mb-0 mr-0">
             <div className="relative">
-              <div className="mask-inverse-corner-top-left top-[-40px] right-0"></div>
-              <div className="mask-inverse-corner-top-left top-[57px] right-130"></div>
               <div className="bg-white text-black rounded-tl-4xl mb-0 sm:px-10 py-4 sm:py-5 flex flex-wrap gap-4 sm:gap-10 text-center justify-center sm:justify-start">
+                <div className="mask-inverse-corner-top-left -left-10 bottom-0"></div>
+                <div className="mask-inverse-corner-top-left -top-10 right-0"></div>
                 {stats.map((item, index) => (
                   <div key={index} className="min-w-[80px] sm:min-w-[90px]">
                     <h2 className="text-xl sm:text-3xl font-bold">
@@ -143,7 +142,6 @@ const Discover = () => {
             minus unde?
           </p>
         </div>
-
 
         <div
           ref={logosRef}
