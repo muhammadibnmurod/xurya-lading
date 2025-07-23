@@ -3,11 +3,13 @@ import backgroundImage from "../../assets/background-img.jpg";
 import WindFarm from "../../assets/wind-farm.jpg";
 import logo1 from "../../assets/Logo/Coca-Cola.png";
 import logoblack from "../../assets/Logo/Coca-Cola-Black.png";
+import { useTranslation } from "react-i18next";
 
 const Discover = () => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const [hasAnimated, setHasAnimated] = useState(false);
   const logosRef = useRef(null);
+  const { t } = useTranslation();
 
   const logos = [
     { default: logoblack, hover: logo1 },
@@ -18,9 +20,9 @@ const Discover = () => {
   ];
 
   const stats = [
-    { value: "6 mil", label: "Annual net income" },
-    { value: "315", label: "Projects completed" },
-    { value: "120K", label: "Global Employees" },
+    { value: "6 mil", label: "Annualnetincome" },
+    { value: "315", label: "Projectscompleted" },
+    { value: "120K", label: "GlobalEmployees" },
   ];
 
   // ANIMATSIYA TRIGGERI
@@ -68,23 +70,23 @@ const Discover = () => {
 
           <div className="relative z-10 h-full flex flex-col justify-center px-4 sm:px-10 gap-4 sm:gap-6 text-white">
             <h3 className="text-xs sm:text-base font-semibold tracking-wide uppercase">
-              #1 Energy provider in the world
+              {t("Energyproviderintheworld")}
             </h3>
             <h1 className="text-2xl sm:text-5xl lg:text-7xl font-extrabold leading-tight max-w-[800px]">
-              New Energy <br /> for the Future
+              {t('NewEnergy')} <br /> {t('fortheFuture')}
             </h1>
             <div className="flex flex-wrap gap-3 sm:gap-4 mt-4">
               <a
                 href="#"
                 className="px-4 py-2 sm:px-6 sm:py-3 rounded-full border border-white text-white font-medium hover:bg-white hover:text-black transition duration-300"
               >
-                Get in touch
+                {t('getintouch')}
               </a>
               <a
                 href="#"
                 className="px-4 py-2 sm:px-6 sm:py-3 rounded-full border border-white text-white font-medium hover:bg-white hover:text-black transition duration-300"
               >
-                Our services
+                {t('ourservices')}
               </a>
             </div>
           </div>
@@ -98,7 +100,7 @@ const Discover = () => {
               />
               <div className="flex items-center justify-between">
                 <p className="text-xs sm:text-sm font-light">
-                  Discover Our Recent Project
+                  {t('DiscoverOurRecentProject')}
                 </p>
                 <button className="border border-white px-2 py-1 rounded-full text-white hover:bg-white hover:text-black transition">
                   ↗
@@ -117,7 +119,7 @@ const Discover = () => {
                     <h2 className="text-xl sm:text-3xl font-bold">
                       {item.value}
                     </h2>
-                    <p className="text-xs sm:text-sm">{item.label}</p>
+                    <p className="text-xs sm:text-sm">{t(item.label)}</p>
                   </div>
                 ))}
               </div>
@@ -130,16 +132,13 @@ const Discover = () => {
         {/* Matn bloki */}
         <div className="flex flex-col lg:flex-row justify-between items-start gap-6 px-4 sm:px-10 lg:px-20">
           <h1 className="text-2xl sm:text-4xl text-gray-900 leading-snug max-w-md">
-            <span className="block text-black">Focusing on quality</span>
+            <span className="block text-black">{t('Focusingonquality')}</span>
             <span className="block font-sans text-gray-400">
-              we maintain customer trust
+              {t('wemaintaincustomertrust')}
             </span>
           </h1>
           <p className="text-gray-500 max-w-2xl text-sm sm:text-base leading-relaxed">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti
-            molestias enim illo. Dolor, illum vero beatae non temporibus quos
-            nostrum neque iusto nulla magnam dolorem impedit fugit repellat
-            minus unde?
+                {t('lorem1')}
           </p>
         </div>
 

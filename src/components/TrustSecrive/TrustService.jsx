@@ -1,25 +1,26 @@
 import React from "react";
 import SolarPanels from "../../assets/SolarPanels.jpg";
+import {useTranslation } from "react-i18next";
 
 const services = [
-  { id: "01", title: "Solar panels for home" },
-  { id: "02", title: "Commercial solar solutions" },
-  { id: "03", title: "EV charging stations" },
-  { id: "04", title: "Battery storage systems" },
+  { id: "01", title: "Solarpanelsforhome" },
+  { id: "02", title: "Commercialsolarsolutions" },
+  { id: "03", title: "EVchargingstations" },
+  { id: "04", title: "Batterystoragesystems" },
 ];
 
 function TrustService() {
+  const { t } = useTranslation();
   return (
     <div className="w-full px-4 py-16 bg-white">
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-10">
-
         <div className="flex-1 space-y-8">
           <div>
             <h1 className="text-3xl sm:text-4xl font-bold text-gray-800">
-              <span className="font-[600]">Trusted service</span>, for your various needs
+              <span className="font-[600]">{t('Trustedservice')}</span>, {t('foryourvariousneeds')}
             </h1>
             <button className="mt-4 bg-green-200 hover:bg-green-300 text-gray-700 font-semibold py-2 px-6 rounded-2xl transition">
-              Get in touch ↗
+            {t('getintouch')} ↗
             </button>
           </div>
 
@@ -31,19 +32,18 @@ function TrustService() {
               >
                 <p className="text-lg font-bold text-gray-400">{service.id}</p>
                 <h4 className="text-xl font-semibold text-green-800 mt-1 mb-3">
-                  {service.title}
+                  {t(service.title)}
                 </h4>
                 <a
                   href="#"
                   className="text-sm text-green-600 hover:underline hover:text-green-800"
                 >
-                  View details
+                  {t('Viewdetails')}
                 </a>
               </div>
             ))}
           </div>
         </div>
-
 
         <div className="flex-1 flex justify-center items-center">
           <img

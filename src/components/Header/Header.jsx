@@ -1,19 +1,46 @@
-import React, { useState } from "react";
+import React, { useMemo, useState, useEffect } from "react";
 import LogoImg from "../../assets/Logo.jpg";
-import { Menu, X } from "lucide-react"; 
+import { Menu, X } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
-const navLinks = ["Home", "About Us", "Features", "Services", "Contact"];
-const languageOptions = ["English", "Uzbek", "Russian"];
+const navLinks = ["home", "about", "features", "services", "contact"];
+const languageOptions = [
+  { label: "English", code: "en" },
+  { label: "Uzbek", code: "uz" },
+  { label: "Russian", code: "ru" },
+];
 
 function Header() {
+  const { t, i18n } = useTranslation();
   const [languageOpen, setLanguageOpen] = useState(false);
-  const [selectedLang, setSelectedLang] = useState("English");
   const [menuOpen, setMenuOpen] = useState(false);
+  const [selectedLang, setSelectedLang] = useState(
+    () => localStorage.getItem("i18nextLng") || "en"
+  );
 
   const handleLanguageSelect = (lang) => {
-    setSelectedLang(lang);
+    i18n.changeLanguage(lang.code);
+    setSelectedLang(lang.code);
     setLanguageOpen(false);
   };
+
+  const langLabel = useMemo(
+    () => languageOptions.find((item) => item.code === selectedLang)?.label,
+    [selectedLang]
+  );
+
+  useEffect(() => {
+    const currentLang = localStorage.getItem("i18nextLng");
+    if (!currentLang) {
+      const defaultLang = "en";
+      i18n.changeLanguage(defaultLang).then(() => {
+        localStorage.setItem("i18nextLng", defaultLang);
+        setSelectedLang(defaultLang);
+      });
+    } else {
+      setSelectedLang(currentLang);
+    }
+  }, [i18n]);
 
   return (
     <header className="bg-white py-4 px-6 ">
@@ -36,7 +63,7 @@ function Header() {
               href="#"
               className="text-gray-600 hover:text-green-600 transition"
             >
-              {link}
+              {t(link)}
             </a>
           ))}
         </nav>
@@ -44,7 +71,7 @@ function Header() {
         {/* Button */}
         <div className="hidden md:flex items-center space-x-3 relative">
           <button className="px-4 py-2 border border-green-600 text-green-600 rounded-3xl hover:bg-green-100 transition">
-            Login
+            {t("Login")}
           </button>
 
           {/* Language */}
@@ -53,7 +80,7 @@ function Header() {
               onClick={() => setLanguageOpen(!languageOpen)}
               className="px-4 py-2 border border-green-600 text-gray-700 rounded-3xl hover:bg-gray-100 transition"
             >
-              {selectedLang}
+              {langLabel}
             </button>
 
             {languageOpen && (
@@ -64,7 +91,7 @@ function Header() {
                     onClick={() => handleLanguageSelect(lang)}
                     className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
                   >
-                    {lang}
+                    {lang.label}
                   </li>
                 ))}
               </ul>
@@ -72,10 +99,9 @@ function Header() {
           </div>
 
           <button className="px-4 py-2 bg-green-600 text-white rounded-3xl hover:bg-green-700 transition">
-            Get in touch
+            {t("Getintouch")}
           </button>
         </div>
-
 
         <div className="md:hidden">
           <button onClick={() => setMenuOpen(!menuOpen)}>
@@ -83,7 +109,6 @@ function Header() {
           </button>
         </div>
       </div>
-
 
       {menuOpen && (
         <div className="md:hidden mt-4 space-y-4">
@@ -101,9 +126,8 @@ function Header() {
 
           <div className="flex flex-col space-y-2 pt-2">
             <button className="px-4 py-2 border border-green-600 text-green-600 rounded-3xl hover:bg-green-100 transition">
-              Login
+              {t("Login")}
             </button>
-
 
             <div className="relative">
               <button
@@ -121,7 +145,7 @@ function Header() {
                       onClick={() => handleLanguageSelect(lang)}
                       className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
                     >
-                      {lang}
+                      {lang.label}
                     </li>
                   ))}
                 </ul>
